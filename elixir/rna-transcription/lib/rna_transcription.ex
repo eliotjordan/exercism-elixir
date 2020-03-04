@@ -9,8 +9,14 @@ defmodule RnaTranscription do
   """
   @spec to_rna([char]) :: [char]
   def to_rna(char) when length(char) == 1 do
-    if char == 'G' do
-      'C'
+    # if char == 'G' do
+    #   'C'
+    # end
+    case char do
+      'G' -> 'C'
+      'C' -> 'G'
+      'T' -> 'A'
+      'A' -> 'U'
     end
   end
 
