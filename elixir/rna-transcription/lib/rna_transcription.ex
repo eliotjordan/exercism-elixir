@@ -28,6 +28,6 @@ defmodule RnaTranscription do
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
     Enum.map(dna, fn(c) -> to_rna([c]) end)
-    |> Enum.reduce('', )
+    |> Enum.concat
   end
 end
