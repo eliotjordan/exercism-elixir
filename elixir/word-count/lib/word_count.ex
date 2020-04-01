@@ -8,6 +8,7 @@ defmodule WordCount do
   def count(sentence) do
     #require IEx; IEx.pry
     String.replace(sentence, ~r/_/, " ") # replace underscores with spaces
+    |> String.downcase
     |> String.split("-") # split on hyphens to preserve them
     |> Enum.map( fn x -> String.replace(x, ~r/[[:punct:]]/, "") end) # remove all other punctuation
     |> Enum.join("-") # put hyphens back
