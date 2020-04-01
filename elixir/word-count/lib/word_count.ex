@@ -6,7 +6,7 @@ defmodule WordCount do
   """
   @spec count(String.t()) :: map
   def count(sentence) do
-    #require IEx; IEx.pry
+    require IEx; IEx.pry
     String.replace(sentence, ~r/_/, " ") # replace underscores with spaces
     |> String.downcase
     |> String.split("-") # split on hyphens to preserve them

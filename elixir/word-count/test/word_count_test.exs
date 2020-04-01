@@ -40,7 +40,7 @@ defmodule WordCountTest do
     assert WordCount.count("go Go GO") == expected
   end
 
-  @tag :pending
+  # We lose the umlaut during the punctuation strip function.
   test "German" do
     expected = %{"götterfunken" => 1, "schöner" => 1, "freude" => 1}
     assert WordCount.count("Freude schöner Götterfunken") == expected
