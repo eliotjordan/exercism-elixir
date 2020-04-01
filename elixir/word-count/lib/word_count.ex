@@ -7,7 +7,8 @@ defmodule WordCount do
   @spec count(String.t()) :: map
   def count(sentence) do
     #require IEx; IEx.pry
-    String.split(sentence, "-") # split on hyphens to preserve them
+    String.replace(sentence, ~r/_/, " ") # replace underscores with spaces
+    |> String.split("-") # split on hyphens to preserve them
     |> Enum.map( fn x -> String.replace(x, ~r/[[:punct:]]/, "") end) # remove all other punctuation
     |> Enum.join("-") # put hyphens back
     |> String.split # Split on spaces into an array
