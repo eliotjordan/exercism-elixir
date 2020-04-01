@@ -6,7 +6,10 @@ defmodule WordCount do
   """
   @spec count(String.t()) :: map
   def count(sentence) do
-    String.replace(sentence, ~r/[[:punct:]]/, "")
+    #require IEx; IEx.pry
+    String.split(sentence, "-") # split on hyphens to preserve them
+    |> Enum.map( fn x -> String.replace(x, ~r/[[:punct:]]/, "") end) # remove all other punctuation
+    |> Enum.join("-") # put hyphens back
     |> String.split # Split on spaces into an array
     |> Enum.group_by(&(&1)) # Group values of array into map where word is the key and the value is array of instances
     |> Enum.map(fn {k,v} -> {k, Enum.count(v)} end) # Returns array of tuples with word and count
