@@ -10,7 +10,7 @@ defmodule WordCount do
     String.replace(sentence, ~r/_/, " ") # replace underscores with spaces
     |> String.downcase
     |> String.split("-") # split on hyphens to preserve them
-    |> Enum.map( fn x -> String.replace(x, ~r/[[:punct:]]/, "") end) # remove all other punctuation
+    |> Enum.map( fn x -> String.replace(x, ~r/[[:punct:]]/u, "") end) # remove all other punctuation. Enable unicode on regex.
     |> Enum.join("-") # put hyphens back
     |> String.split # Split on spaces into an array
     |> Enum.group_by(&(&1)) # Group values of array into map where word is the key and the value is array of instances
