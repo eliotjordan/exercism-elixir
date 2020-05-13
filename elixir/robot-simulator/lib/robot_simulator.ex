@@ -2,14 +2,22 @@ defmodule RobotSimulator do
   @doc """
   Create a Robot Simulator given an initial direction and position.
 
-  Valid directions are: `:north`, `:east`, `:south`, `:west`
+  def create(direction :
   """
+  def create(direction \\ :north, position \\ {0,0}) when not (direction in [:north, :south, :east, :west]) do
+    {:error, "invalid direction"}
+  end
+
   @spec create(direction :: atom, position :: {integer, integer}) :: any
-  def create(direction \\ nil, position \\ nil) do
+  def create(direction, position) do
     %{
-      :direction => :north,
-      :position => {0, 0}
+      :direction => direction,
+      :position => position
     }
+  end
+
+  def valid_direction?(direction) do
+    Enum.member?([:north, :south, :east, :west], direction)
   end
 
   @doc """
